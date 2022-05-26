@@ -27,7 +27,6 @@ class EnterCityViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.hideKeyboardWhenTappedAround()
         setupUI()
         setupLocalization()
         self.locationManager.requestAlwaysAuthorization()

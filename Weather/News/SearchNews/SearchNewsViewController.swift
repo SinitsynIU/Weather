@@ -31,7 +31,6 @@ class SearchNewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.hideKeyboardWhenTappedAround()
         setupUI()
         setupTabelView()
         setupSearchBar()
