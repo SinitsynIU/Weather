@@ -80,6 +80,8 @@ class CoreDataManager {
                 self.context.delete($0)
             }
             self.saveContext()
+            NotificationCenter.default.post(name: NSNotification.Name("WeatherDataBaseDidChange"), object: nil)
+            saveContext()
         } catch (let e) {
             print(e.localizedDescription)
         }

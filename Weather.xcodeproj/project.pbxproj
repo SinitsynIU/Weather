@@ -56,8 +56,6 @@
 		485A63EE2808303B0013E62E /* WeatherDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A63EC2808303B0013E62E /* WeatherDB+CoreDataClass.swift */; };
 		485A63EF2808303B0013E62E /* WeatherDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A63ED2808303B0013E62E /* WeatherDB+CoreDataProperties.swift */; };
 		485EB42E282CDF870098B0A8 /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EB42D282CDF870098B0A8 /* AdsManager.swift */; };
-		485EB433282D7A470098B0A8 /* HistoryWeatherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EB432282D7A470098B0A8 /* HistoryWeatherInfoViewController.swift */; };
-		485EB435282D7A520098B0A8 /* HistoryWeatherInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 485EB434282D7A520098B0A8 /* HistoryWeatherInfoViewController.storyboard */; };
 		489BC14227E8FA9900384FB3 /* WeatherJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BC14127E8FA9900384FB3 /* WeatherJSON.swift */; };
 		48D9531028183B730060BF76 /* close.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48D9530F28183B730060BF76 /* close.mp3 */; };
 		48D95312281845130060BF76 /* remove.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48D95311281845130060BF76 /* remove.mp3 */; };
@@ -127,8 +125,6 @@
 		485A63EC2808303B0013E62E /* WeatherDB+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherDB+CoreDataClass.swift"; sourceTree = "<group>"; };
 		485A63ED2808303B0013E62E /* WeatherDB+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeatherDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		485EB42D282CDF870098B0A8 /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
-		485EB432282D7A470098B0A8 /* HistoryWeatherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWeatherInfoViewController.swift; sourceTree = "<group>"; };
-		485EB434282D7A520098B0A8 /* HistoryWeatherInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoryWeatherInfoViewController.storyboard; sourceTree = "<group>"; };
 		489BC14127E8FA9900384FB3 /* WeatherJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherJSON.swift; sourceTree = "<group>"; };
 		48D9530F28183B730060BF76 /* close.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = close.mp3; sourceTree = "<group>"; };
 		48D95311281845130060BF76 /* remove.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = remove.mp3; sourceTree = "<group>"; };
@@ -368,7 +364,6 @@
 		485A63982807E7E80013E62E /* History */ = {
 			isa = PBXGroup;
 			children = (
-				485EB431282D79CF0098B0A8 /* HistoryWeatherInfo */,
 				485A63992807E82D0013E62E /* HistoryViewController.swift */,
 				485A639B2807E8AB0013E62E /* HistoryViewController.storyboard */,
 			);
@@ -382,15 +377,6 @@
 				485A63EC2808303B0013E62E /* WeatherDB+CoreDataClass.swift */,
 			);
 			path = CoreDataModels;
-			sourceTree = "<group>";
-		};
-		485EB431282D79CF0098B0A8 /* HistoryWeatherInfo */ = {
-			isa = PBXGroup;
-			children = (
-				485EB432282D7A470098B0A8 /* HistoryWeatherInfoViewController.swift */,
-				485EB434282D7A520098B0A8 /* HistoryWeatherInfoViewController.storyboard */,
-			);
-			path = HistoryWeatherInfo;
 			sourceTree = "<group>";
 		};
 		48DBAE7F27F2CEB80035222E /* Localizations */ = {
@@ -516,7 +502,6 @@
 				480FBF3C2817C5D70064F06B /* clear.mp4 in Resources */,
 				48DBAE8427F2D6830035222E /* EnterCityViewController.storyboard in Resources */,
 				482D60E828193F22009E794D /* clouds.mp3 in Resources */,
-				485EB435282D7A520098B0A8 /* HistoryWeatherInfoViewController.storyboard in Resources */,
 				4835DAAE2812A2D8003A1533 /* delete.json in Resources */,
 				48007AB527E4BF7D00F64604 /* WeatherCurrentViewController.storyboard in Resources */,
 				48DBAEB727F352C50035222E /* AppleMapViewController.storyboard in Resources */,
@@ -616,7 +601,6 @@
 				4838C35227EC400B003778BA /* AppleMapViewController.swift in Sources */,
 				4838C34E27EB8840003778BA /* FileServiceManager.swift in Sources */,
 				485A63C8280816670013E62E /* WeatherDataBase.xcdatamodeld in Sources */,
-				485EB433282D7A470098B0A8 /* HistoryWeatherInfoViewController.swift in Sources */,
 				48007AB827E4C14700F64604 /* NetworkServiceManager.swift in Sources */,
 				485A63EE2808303B0013E62E /* WeatherDB+CoreDataClass.swift in Sources */,
 				4838C35927EC408E003778BA /* SearchNewsViewController.swift in Sources */,

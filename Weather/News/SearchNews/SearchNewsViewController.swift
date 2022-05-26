@@ -191,28 +191,22 @@ extension SearchNewsViewController: UISearchBarDelegate {
 extension SearchNewsViewController: GADFullScreenContentDelegate {
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        if let vc = UIStoryboard(name: "PostNewsViewController", bundle: nil).instantiateInitialViewController() as? PostNewsViewController, let index = selectedIndex {
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .flipHorizontal
-            let newsJ = news?.articles?[index]
-            vc.newsJ = newsJ
-            self.present(vc, animated: true, completion: {
-                self.blur.isHidden = true
-            })
-        }
-        selectedIndex = nil
+        presentVC()
     }
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        if let vc = UIStoryboard(name: "PostNewsViewController", bundle: nil).instantiateInitialViewController() as? PostNewsViewController, let index = selectedIndex {
+        presentVC()
+    }
+    
+    private func presentVC() {
+        guard let vc = PostNewsViewController.getInstanceViewController as? PostNewsViewController, let index = selectedIndex else { return }
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             let newsJ = news?.articles?[index]
             vc.newsJ = newsJ
-            self.present(vc, animated: true, completion: {
+            present(vc, animated: true, completion: {
                 self.blur.isHidden = true
             })
-        }
         selectedIndex = nil
     }
 }

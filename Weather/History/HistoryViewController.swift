@@ -24,48 +24,47 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        buttonIsHidden()
         setupLocalization()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(weatherDataBaseDidChange), name: NSNotification.Name("WeatherDataBaseDidChange"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupTabelView()
-        historyTabelView.reloadData()
+        getData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
             super.viewDidDisappear(animated)
-        MediaManager.shared.clearMediaPlayer()
+        MediaManager.shared.clearAudioPlayer()
     }
     
     @objc
     func weatherDataBaseDidChange() {
-        // weatherArray.removeAll()
-        historyTabelView.reloadData()
+        getData()
     }
     
-    func buttonIsHidden() {
-//        weatherArray
-//            .filter { value in
-//            value.count > 1
-//            }
-//            .subscribe(onNext: { [weak self] value in
-//            self?.clearBDButton.isHidden = false
-//            })
-//            .disposed(by: disposeBag)
-//        if weatherArray.count {
-//            clearBDButton.isHidden = true
-//        } else {
-//            clearBDButton.isHidden = false
-//        }
+    private func getData () {
+        if historySegmentedControl.selectedSegmentIndex == 0 {
+            let parameters = CoreDataManager.shared.getWeatherSourceFromDB(source: SourceValues.city.rawValue)
+            weatherArray.subscribe(onNext: { value in
+                self.clearBDButton.isHidden = value.count == 0
+            }).disposed(by: disposeBag)
+            weatherArray.onNext(parameters)
+        } else {
+            let parameters = CoreDataManager.shared.getWeatherSourceFromDB(source: SourceValues.coordinate.rawValue)
+            weatherArray.subscribe(onNext: { value in
+                self.clearBDButton.isHidden = value.count == 0
+            }).disposed(by: disposeBag)
+            weatherArray.onNext(parameters)
+        }
+        historyTabelView.reloadData()
     }
     
     private func setupUI() {
         self.overrideUserInterfaceStyle = .light
         historyBgImage.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        clearBDButton.isHidden = true
     }
     
     private func setupTabelView() {
@@ -111,32 +110,13 @@ class HistoryViewController: UIViewController {
     @IBAction func historySegmentedControlAction(_ sender: UISegmentedControl) {
         MediaManager.shared.playerAudioSettings(bundleResource: MediaManager.ResourceBundleValues.tap, notificationOn: false)
         MediaManager.shared.playerAudioPlay()
-        
-        if sender.selectedSegmentIndex == 0 {
-            let parameters = CoreDataManager.shared.getWeatherSourceFromDB(source: SourceValues.city.rawValue)
-            weatherArray.subscribe(onNext: { value in
-                print(value)
-            }).disposed(by: disposeBag)
-            //weatherArray.removeAll()
-            weatherArray.onNext(parameters)
-        } else {
-            let parameters = CoreDataManager.shared.getWeatherSourceFromDB(source: SourceValues.coordinate.rawValue)
-            weatherArray.subscribe(onNext: { value in
-                print(value)
-            }).disposed(by: disposeBag)
-            //weatherArray.removeAll()
-            weatherArray.onNext(parameters)
-        }
-        
-        historyTabelView.reloadData()
+        getData()
     }
     
     @IBAction func ClearBDAction(_ sender: Any) {
         MediaManager.shared.playerAudioSettings(bundleResource: MediaManager.ResourceBundleValues.remove, notificationOn: false)
         MediaManager.shared.playerAudioPlay()
         CoreDataManager.shared.deleteWeatherAll()
-        
-        historyTabelView.reloadData()
     }
 }
 
@@ -148,15 +128,11 @@ extension HistoryViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //print(indexPath)
-
-//        let weatherDB = fetchResultController.object(at: indexPath)
-//        guard indexPath.section == 0 else { return }
-//        if let vc = UIStoryboard(name: "HistoryWeatherInfoViewController", bundle: nil).instantiateInitialViewController() as? HistoryWeatherInfoViewController {
-//            vc.modalPresentationStyle = .fullScreen
-//            vc.modalTransitionStyle = .flipHorizontal
-//            vc.weatherJ = weatherDB
-//            self.present(vc, animated: true, completion: nil)
-//        }
+        guard let weather = try? weatherArray.value()[indexPath.row].weather else { return }
+        guard let vc = WeatherCurrentViewController.getInstanceViewController as? WeatherCurrentViewController else { return }
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            vc.weatherJ = weather
+            present(vc, animated: true)
     }
 }
