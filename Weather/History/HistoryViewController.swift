@@ -51,12 +51,14 @@ class HistoryViewController: UIViewController {
             weatherArray.subscribe(onNext: { value in
                 self.clearBDButton.isHidden = value.count == 0
             }).disposed(by: disposeBag)
+            weatherArray.onNext([])
             weatherArray.onNext(parameters)
         } else {
             let parameters = CoreDataManager.shared.getWeatherSourceFromDB(source: SourceValues.coordinate.rawValue)
             weatherArray.subscribe(onNext: { value in
                 self.clearBDButton.isHidden = value.count == 0
             }).disposed(by: disposeBag)
+            weatherArray.onNext([])
             weatherArray.onNext(parameters)
         }
         historyTabelView.reloadData()
