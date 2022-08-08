@@ -16,3 +16,8 @@
 - погода сохраняется в CoreData при получении сортируется по последней запрошенной.
 - реклама в приложении через Google AdMod.
 - локализация Russian, English.
+<img width="310" alt="Снимок экрана 2022-08-08 в 07 34 30" src="https://user-images.githubusercontent.com/105010775/183327841-4188f7de-f46c-4729-b053-9111df51a19d.png">
+<img width="311" alt="Снимок экрана 2022-08-08 в 07 35 21" src="https://user-images.githubusercontent.com/105010775/183327865-0fce592a-0982-4ac6-9567-6a1a3cd633ce.png">
+<img width="309" alt="Снимок экрана 2022-08-08 в 07 35 41" src="https://user-images.githubusercontent.com/105010775/183327873-c61209b6-31c7-4856-a300-13f29d78866a.png">
+<img width="311" alt="Снимок экрана 2022-08-08 в 07 36 01" src="https://user-images.githubusercontent.com/105010775/183327885-1510b018-0e9e-4dcb-82a4-3b28b1a9222c.png">
+<img width="313" alt="Снимок экрана 2022-08-08 в 07 36 06" src="https://user-images.githubusercontent.com/105010775/183327895-ea75e94e-460e-4bc0-b6fd-02ec867733bd.png">
